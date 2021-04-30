@@ -1,0 +1,22 @@
+@import "variables/index";
+
+.item {
+  display: block;
+  cursor: pointer;
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+}
+
+ion-content {
+  --background: var(--ion-color-light);
+}
+
+ion-header {
+  ion-toolbar {
+    --background: var(--ion-color-danger);
+  }
+}
+
+ion-list {
+  background-color: transparent;
+}

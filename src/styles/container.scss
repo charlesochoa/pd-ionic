@@ -1,0 +1,27 @@
+.u-container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 10px;
+  padding-left: 10px;
+
+  &::after {
+    display: table;
+    clear: both;
+    content: "";
+  }
+}
+
+@media only screen and (min-width: $screen-sm) {
+  .u-container {
+    width: 750px;
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+@media only screen and (min-width: $screen-md) {
+  .u-container {
+    width: 970px;
+  }
+}

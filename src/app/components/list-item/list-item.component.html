@@ -1,0 +1,19 @@
+<ion-item  lines="none">
+  <ion-item lines="none" >
+    <ion-label>{{cartProduct.product.name}}</ion-label>
+
+  </ion-item>
+
+  <ion-label class="price-label">{{cartProduct.product.price}} €</ion-label>
+  <ion-item>
+      <ion-button (click)="decrement()" color="danger" [class.half-rounded-open]="!angularShape" [class.angular-shape]="angularShape" size="small"
+      [disabled]="delayRemove || !cartProduct.count">
+        <ion-icon name="remove"></ion-icon>
+      </ion-button>
+      <ion-label class="selected-label" >{{cartProduct.count ? cartProduct.count : 0}}</ion-label>
+      <ion-button (click)="increment()" color="primary" [class.half-rounded-close]="!angularShape" [class.angular-shape]="angularShape" size="small"
+      [disabled]="delayAdd">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+  </ion-item>
+</ion-item>

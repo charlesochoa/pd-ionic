@@ -1,0 +1,46 @@
+.angular-shape {
+  --border-radius: 0px ;
+  border-radius: 0px ;
+}
+
+.rounded-shape {
+  --border-radius: 20px ;
+  border-radius: 20px ;
+}
+
+.half-rounded-open {
+  --border-radius: 20px 0px 0px 20px ;
+  border-radius: 20px 0px 0px 20px ;
+
+}
+
+.half-rounded-close {
+  --border-radius: 0px 20px 20px 0px ;
+  border-radius: 0px 20px 20px 0px ;
+
+}
+.selected-label {
+  background-color: var(--ion-color-light);
+  min-width: 20px;
+  text-align: center;
+}
+
+.price-label {
+  text-align: right;
+}
+
+
+ion-item {
+  --lines: "none";
+  color: "transparent";
+}
+
+img {
+  object-fit: cover;
+  height: 120px;
+  width: 100%;
+}
+
+.selection-button {
+  --border-width: 100px
+}

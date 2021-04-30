@@ -1,0 +1,7 @@
+{
+  "name": "pd-ionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,205 @@
+@import "variables/index";
+
+// INPUT
+.u-custom-input {
+  // label
+  font-family: var(--fontPrimary);
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.2em;
+  color: var(--colorTextGrey);
+  margin-bottom: 10px;
+  --border-color: var(--colorBorderPrimary);
+
+  &.m-bold {
+    font-weight: 500;
+  }
+
+  // input
+  ion-input,
+  ion-textarea {
+    color: var(--colorPrimary);
+  }
+}
+
+// BUTTON
+.u-custom-btn {
+  // label
+  font-family: var(--fontPrimary);
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.2em;
+  color: var(--colorTextGrey);
+  margin-bottom: 10px;
+  --border-color: var(--colorBorderPrimary);
+
+  &.m-bold {
+    font-weight: 500;
+  }
+}
+
+// SELECT
+.u-custom-select {
+  font-family: var(--fontPrimary);
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.2em;
+  color: var(--colorTextGrey);
+  margin-bottom: 10px;
+  --border-color: var(--colorBorderPrimary);
+
+  &.m-border-top {
+    border-top: 1px solid var(--colorBorderPrimary);
+  }
+
+  &.m-inline {
+    border: none;
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 0;
+    line-height: 1.6em;
+    padding: 0px;
+
+    ion-select {
+      padding: 0px;
+      color: var(--colorTextGrey);
+    }
+  }
+
+  ion-label {
+    overflow: visible;
+  }
+
+  ion-select {
+    color: var(--colorPrimary);
+    padding-left: 0px;
+    padding: 0;
+    align-items: center;
+    --max-width: 55%;
+  }
+}
+
+// SELECT INLINE
+.u-custom-select-inline {
+  display: inline-flex;
+  padding: 5px 5px 5px 10px;
+  font-family: var(--fontPrimary);
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.2em;
+  color: var(--colorTextGrey);
+  background-color: var(--colorWhite);
+  white-space: nowrap;
+  border: 1px solid var(--colorGreyLight);
+
+  &.m-selected {
+    color: var(--colorWhite);
+    background-color: var(--colorPrimary);
+  }
+}
+
+// SELECT OPTION
+ion-select-option,
+ion-select-popover {
+  ion-list-header {
+    font-family: var(--fontPrimary);
+    font-weight: 500;
+    font-size: 1.4rem;
+    line-height: 1.2em;
+    color: var(--colorPrimary);
+    text-transform: uppercase;
+  }
+
+  .item {
+    font-family: var(--fontPrimary);
+    font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 1.2em;
+    color: var(--colorTextGrey);
+  }
+
+  ion-radio {
+    height: 15px;
+    width: 15px;
+    --color: var(--colorGrey);
+  }
+}
+
+// CHECKBOX
+.u-custom-checkbox {
+  // label
+  font-family: var(--fontPrimary);
+  font-weight: 400;
+  font-size: 1.3rem;
+  line-height: 1.3em;
+  color: var(--colorTextGreyDark);
+  margin-bottom: 10px;
+  --border-style: none;
+
+  // input
+  ion-checkbox {
+    margin-right: 15px;
+  }
+}
+
+// DATETIME
+.u-custom-datetime {
+  // label
+  font-family: var(--fontPrimary);
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.2em;
+  color: var(--colorTextGrey);
+  margin-bottom: 10px;
+  --border-color: var(--colorBorderPrimary);
+
+  &.m-hour {
+    color: var(--colorPrimary);
+    font-weight: 500;
+    font-size: 1.6rem;
+  }
+
+  // input
+  ion-datetime {
+    color: var(--colorPrimary);
+    height: 40px;
+    z-index: 10;
+  }
+}
+
+// SWITCH
+.u-custom-toggle {
+  font-family: var(--fontPrimary);
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.2em;
+  color: var(--colorPrimary);
+  border: none;
+  --padding-start: 0px;
+  --border-color: transparent;
+
+  ion-toggle {
+    padding: 0px;
+    transform: scale(0.6);
+    --background-checked: rgb(67, 213, 89);
+  }
+}
+
+// RADIOBUTTON
+.u-custom-radio {
+  --inner-border-width: 0px;
+  font-family: var(--fontPrimary);
+  font-weight: 500;
+  color: var(--colorTextGreyDark);
+  font-size: 1.5rem;
+  line-height: 1.5em;
+
+  ion-radio {
+    width: 15px;
+    height: 15px;
+  }
+
+  ion-label {
+    padding-left: 20px;
+  }
+}

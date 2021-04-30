@@ -1,0 +1,28 @@
+
+
+ion-header {
+  ion-toolbar {
+    --background: var(--ion-color-danger);
+  }
+}
+
+.item {
+  display: block;
+  cursor: pointer;
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+}
+
+.angular-shape {
+  --border-radius: 0px ;
+  border-radius: 0px ;
+}
+
+.rounded-shape {
+  --border-radius: 40px ;
+  border-radius: 40px ;
+}
+
+.summary-label {
+  text-align: right;
+}

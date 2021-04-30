@@ -1,0 +1,44 @@
+// Font families
+$fontRoboto: "Roboto", sans-serif; // 400, 500, 700
+$fontHiberus: "Hiberustype";
+$fontAller: "fontAller";
+
+// Font face
+@font-face {
+  font-family: $fontHiberus;
+  src: url("/assets/fonts/HiberusType/Hiberustype-Bold.eot?#iefix") format("embedded-opentype"),
+    url("/assets/fonts/HiberusType/Hiberustype-Bold.woff") format("woff"),
+    url("/assets/fonts/HiberusType/Hiberustype-Bold.ttf") format("truetype"),
+    url("/assets/fonts/HiberusType/Hiberustype-Bold.svg#Hiberustype-Bold") format("svg");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: $fontAller;
+  src: url("/assets/fonts/Aller/Aller_Bd.eot?#iefix") format("embedded-opentype"),
+    url("/assets/fonts/Aller/Aller_Bold.woff") format("woff"),
+    url("/assets/fonts/Aller/Aller_Bold.ttf") format("truetype"),
+    url("/assets/fonts/Aller/Aller_Bold.svg") format("svg");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: $fontAller;
+  src: url("/assets/fonts/Aller/Aller_Light.eot?#iefix") format("embedded-opentype"),
+    url("/assets/fonts/Aller/Aller_Light.woff") format("woff"),
+    url("/assets/fonts/Aller/Aller_Light.ttf") format("truetype"),
+    url("/assets/fonts/Aller/Aller_Light.svg") format("svg");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: $fontAller;
+  src: url("/assets/fonts/Aller/Aller.eot?#iefix") format("embedded-opentype"),
+    url("/assets/fonts/Aller/Aller.woff") format("woff"), url("/assets/fonts/Aller/Aller.ttf") format("truetype"),
+    url("/assets/fonts/Aller/Aller.svg") format("svg");
+  font-weight: 500;
+  font-style: normal;
+}

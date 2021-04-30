@@ -1,0 +1,11 @@
+/* Responsive font size porportion rule */
+html {
+  font-size: 62.5% !important; // 1.6rem = 16px, 2.0rem = 20px, etc...
+
+  @media (max-width: $screen-xs - 1) {
+    font-size: 60% !important; // Reduce font size on mobile
+  }
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

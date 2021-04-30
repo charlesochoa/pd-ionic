@@ -1,0 +1,390 @@
+/* stylelint-disable */
+
+[class*="col-"],
+.u-grid::after {
+  box-sizing: border-box;
+}
+
+.u-clearfix::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.u-grid {
+  width: 100%;
+  min-width: 0;
+  margin-right: 0;
+  margin-left: 0;
+  padding-right: 5px;
+  padding-left: 5px;
+
+  &::after {
+    display: table;
+    clear: both;
+    content: "";
+  }
+
+  &.u-container {
+    > [class*="u-xs-col-"] {
+      &:first-child {
+        padding-left: 0;
+      }
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
+}
+
+[class*="col-"] {
+  width: 100%;
+  margin: 10px 0;
+  padding-left: 0;
+  float: none;
+}
+
+// Mobile Layout
+
+[class*="u-xs-col-"] {
+  margin: 0 0 10px;
+  padding-right: 5px;
+  padding-bottom: 0;
+  padding-left: 5px;
+  float: left;
+}
+
+.u-xs-col-1-1 {
+  width: 100%;
+}
+
+// Grid 12
+$count: 0;
+@mixin grid-12-xs-col {
+  @while $count < 12 {
+    $count: $count + 1;
+    .u-xs-col-#{$count}-12 {
+      width: ($count * 100% / 12);
+      @if $count == 12 {
+        padding-right: 0;
+        padding-left: 0;
+      }
+    }
+    .u-offset-col-#{$count}-12 {
+      padding-left: ($count * 100% / 12);
+    } // test carlosr
+  }
+}
+
+@include grid-12-xs-col;
+
+// Grid 7
+$count: 0;
+@mixin grid-7-xs-col {
+  @while $count < 7 {
+    $count: $count + 1;
+    .u-xs-col-#{$count}-7 {
+      width: ($count * 100% / 7);
+      @if $count == 7 {
+        padding-right: 0;
+        padding-left: 0;
+      }
+    }
+  }
+}
+
+@include grid-7-xs-col;
+
+// Grid 5
+$count: 0;
+@mixin grid-5-xs-col {
+  @while $count < 5 {
+    $count: $count + 1;
+    .u-xs-col-#{$count}-5 {
+      width: ($count * 100% / 5);
+      @if $count == 5 {
+        padding-right: 0;
+        padding-left: 0;
+      }
+    }
+  }
+}
+
+@include grid-12-xs-col;
+
+.u-hide-on-mobile {
+  display: none;
+}
+
+@media handheld, only screen and (min-width: $screen-sm) {
+  .u-hide-on-mobile {
+    display: block;
+  }
+
+  .u-hide-on-tablets,
+  .u-hide-from-tablets {
+    display: none;
+  }
+
+  .u-grid {
+    &.u-container {
+      > [class*="u-sm-col-"] {
+        &:first-child {
+          padding-left: 0;
+        }
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+    }
+  }
+
+  [class*="u-sm-col-"] {
+    min-height: 1px;
+    margin-top: 0;
+    padding-right: 10px;
+    padding-left: 10px;
+    float: left;
+  }
+
+  .u-grid {
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+
+  .u-sm-col-1-1 {
+    width: 100%;
+  }
+
+  // Small columns
+
+  // Grid 12
+  $count: 0;
+  @mixin grid-sm-12-col {
+    @while $count < 12 {
+      $count: $count + 1;
+      .u-sm-col-#{$count}-12 {
+        width: ($count * 100% / 12);
+        @if $count == 12 {
+          padding-right: 0;
+          padding-left: 0;
+        }
+      }
+    }
+  }
+
+  @include grid-sm-12-col;
+
+  // Grid 7
+  $count: 0;
+  @mixin grid-sm-7-col {
+    @while $count < 7 {
+      $count: $count + 1;
+      .u-sm-col-#{$count}-7 {
+        width: ($count * 100% / 7);
+        @if $count == 7 {
+          padding-right: 0;
+          padding-left: 0;
+        }
+      }
+    }
+  }
+
+  @include grid-sm-7-col;
+
+  // Grid 5
+  $count: 0;
+  @mixin grid-sm-5-col {
+    @while $count < 5 {
+      $count: $count + 1;
+      .u-sm-col-#{$count}-5 {
+        width: ($count * 100% / 5);
+        @if $count == 5 {
+          padding-right: 0;
+          padding-left: 0;
+        }
+      }
+    }
+  }
+
+  @include grid-sm-5-col;
+}
+
+@media handheld, only screen and (min-width: $screen-md) {
+  .u-hide-on-mobile,
+  .u-hide-on-tablets {
+    display: block;
+  }
+
+  .u-hide-on-desktop {
+    display: none;
+  }
+
+  .u-grid {
+    &.u-container {
+      > [class*="u-md-col-"] {
+        &:first-child {
+          padding-left: 0;
+        }
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+    }
+  }
+
+  [class*="u-md-col-"] {
+    min-height: 1px;
+    margin-top: 0;
+    padding-right: 10px;
+    padding-left: 10px;
+    float: left;
+  }
+
+  .u-md-col-1-1 {
+    width: 100%;
+    padding-right: 0;
+  }
+
+  // Grid 12
+  $count: 0;
+  @mixin grid-12-md-col {
+    @while $count < 12 {
+      $count: $count + 1;
+      .u-md-col-#{$count}-12 {
+        width: ($count * 100% / 12);
+        @if $count == 12 {
+          padding-right: 0;
+          padding-left: 0;
+        }
+      }
+    }
+  }
+
+  @include grid-12-md-col;
+
+  // Grid 7
+  $count: 0;
+  @mixin grid-7-md-col {
+    @while $count < 7 {
+      $count: $count + 1;
+      .u-md-col-#{$count}-7 {
+        width: ($count * 100% / 7);
+        @if $count == 7 {
+          padding-right: 0;
+          padding-left: 0;
+        }
+      }
+    }
+  }
+
+  @include grid-7-md-col;
+
+  // Grid 5
+  $count: 0;
+  @mixin grid-5-md-col {
+    @while $count < 5 {
+      $count: $count + 1;
+      .u-md-col-#{$count}-5 {
+        width: ($count * 100% / 5);
+        @if $count == 5 {
+          padding-right: 0;
+          padding-left: 0;
+        }
+      }
+    }
+  }
+
+  @include grid-5-md-col;
+}
+
+@media handheld, only screen and (min-width: $screen-lg) {
+
+  .u-grid {
+    &.u-container {
+      > [class*="u-lg-col-"] {
+        &:first-child {
+          padding-left: 0;
+        }
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+    }
+  }
+
+  [class*="u-lgcol-"] {
+    min-height: 1px;
+    margin-top: 0;
+    padding-right: 10px;
+    padding-left: 10px;
+    float: left;
+  }
+
+
+  .u-lg-col-1-1 {
+    width: 100%;
+    padding-right: 0;
+  }
+
+  // Grid 12
+  $count: 0;
+  @mixin grid-12-lg-col {
+    @while $count < 12 {
+      $count: $count + 1;
+      .u-lg-col-#{$count}-12 {
+        width: ($count * 100% / 12);
+        @if $count == 12 {
+          padding-right: 0;
+          padding-left: 0;
+        }
+      }
+    }
+  }
+
+  @include grid-12-lg-col;
+
+  // Grid 7
+  $count: 0;
+  @mixin grid-7-lg-col {
+    @while $count < 7 {
+      $count: $count + 1;
+      .u-lg-col-#{$count}-7 {
+        width: ($count * 100% / 7);
+        @if $count == 7 {
+          padding-right: 0;
+          padding-left: 0;
+        }
+      }
+    }
+  }
+
+  @include grid-7-lg-col;
+
+  // Grid 5
+  $count: 0;
+  @mixin grid-5-lg-col {
+    @while $count < 5 {
+      $count: $count + 1;
+      .u-lg-col-#{$count}-5 {
+        width: ($count * 100% / 5);
+        @if $count == 5 {
+          padding-right: 0;
+          padding-left: 0;
+        }
+      }
+    }
+  }
+
+  @include grid-5-lg-col;
+}
+
+@media only screen and (min-device-width: $screen-sm) and (max-device-width: $screen-md-max-tablet) {
+  .u-hide-on-tablets,
+  .u-hide-on-mobile.u-hide-on-tablets {
+    display: none !important;
+  }
+}
+
+/* stylelint-enable */

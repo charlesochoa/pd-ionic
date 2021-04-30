@@ -1,0 +1,52 @@
+@import "variables/index";
+
+// Text align
+
+.u-align-center {
+  text-align: center;
+}
+
+.u-align-right {
+  text-align: right;
+}
+
+.u-align-left {
+  text-align: left;
+}
+
+// Styles
+
+.u-text-title {
+  font-family: var(--fontPrimary);
+  font-weight: 500;
+  color: var(--colorTextPrimary);
+  font-size: 1.5rem;
+  line-height: initial;
+}
+
+.u-text-subtitle {
+  font-family: var(--fontPrimary);
+  font-weight: 400;
+  color: var(--colorTextGrey);
+  font-size: 1.4rem;
+  line-height: initial;
+}
+
+// Utils
+
+.u-truncate-2-lines {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -mz-box-orient: vertical;
+  /* autoprefixer: off */
+  -webkit-box-orient: vertical;
+  /* autoprefixer: on */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.u-ellipsis {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

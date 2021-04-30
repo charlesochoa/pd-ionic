@@ -1,0 +1,38 @@
+/* mixin for multiline */
+
+@mixin multiLineEllipsis($lineHeight: 1.2em, $lineCount: 1, $bgColor: white) {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  line-height: $lineHeight;
+  max-height: $lineHeight * $lineCount;
+  text-align: justify;
+  margin-right: -12px;
+  padding-right: 12px;
+  &:before {
+    font-family: inherit;
+    color: var(--colorPrimary);
+    font-size: 14px;
+    content: " ...Ver más";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background: $bgColor;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    width: 63px;
+    height: 1em;
+    margin-top: 0.2em;
+    background: $bgColor;
+  }
+}
+
+// iPhone SafeArea
+@mixin supports-safe-area {
+  @supports (padding-top: env(safe-area-inset-top)) {
+    @content;
+  }
+}

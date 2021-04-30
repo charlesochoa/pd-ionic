@@ -1,0 +1,37 @@
+<ion-header background="danger">
+  <ion-toolbar>
+      <ion-title slot="start">
+        <img
+            src="../../../assets/images/icon.jpg" height="40px"
+          />
+      </ion-title>
+    <ion-title slot="start">
+        <img
+            src="../../../assets/images/letters.png" height="20px"
+          />
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content >
+  <form #form="ngForm" (ngSubmit)="register()">
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div text-center>
+            <h3>El siguiente correo electrónico tendrá uso exclusivo para el estudio. Una vez terminado el mismo, se eliminarán de la base de datos.</h3>
+          </div>
+          <div padding>
+            <ion-item>
+              <ion-input name="email" type="email" placeholder="your@email.com" [(ngModel)]="email" required></ion-input>
+            </ion-item>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
+<ion-footer>
+  <div padding>
+    <ion-button  size="large" (click)="register()" [disabled]="form.invalid" expand="block" >¡Empezar!</ion-button>
+  </div>
+</ion-footer>

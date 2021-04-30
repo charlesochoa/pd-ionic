@@ -1,0 +1,26 @@
+<ion-header background="danger">
+  <ion-toolbar>
+      <ion-title slot="start">
+        <img
+            src="../../../assets/images/icon.jpg" height="40px"
+          />
+      </ion-title>
+    <ion-title slot="start">
+        <img
+            src="../../../assets/images/letters.png" height="20px"
+          />
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content">
+  <ion-list *ngIf="cartProducts">
+    <product-item *ngFor="let item of cartProducts; let i = index"
+    (cartChange)="modifyCart($event, i)"
+    [cartProduct]= "item"
+    [cart]= "cart"
+    class="item animated delay-0{{ i+3 }}s"
+    [angularShape]="user.angularShape">
+    </product-item>
+  </ion-list>
+</ion-content>

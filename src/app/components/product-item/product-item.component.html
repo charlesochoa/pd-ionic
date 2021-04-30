@@ -1,0 +1,39 @@
+<ion-item lines="none">
+  <ion-card [class.rounded-shape]="!angularShape" [class.angular-shape]="angularShape">
+    <ion-card-header class="ion-no-padding rounded-shape">
+      <img src="{{cartProduct.product.image_url}}"/>
+      <ion-item lines="none">
+        <ion-card-title>{{cartProduct.product.name}}</ion-card-title>
+        <ion-label class="price-label">{{cartProduct.product.price}} €</ion-label>
+      </ion-item>
+
+
+    </ion-card-header>
+    <ion-card-content>
+      {{cartProduct.product.description}}
+      <ion-item lines="none" >
+        <ion-item slot="end"  lines="none" >
+          <ion-button
+            (click)="decrement()"
+            color="danger"
+            [class.half-rounded-open]="!angularShape"
+            [class.angular-shape]="angularShape"
+            size="small"
+            [disabled]="delayRemove || !cartProduct.count">
+            <ion-icon name="remove"></ion-icon>
+          </ion-button>
+          <ion-label class="selected-label" >{{cartProduct.count ? cartProduct.count : 0}}</ion-label>
+          <ion-button
+            (click)="increment()"
+            color="primary"
+            [class.half-rounded-close]="!angularShape"
+            [class.angular-shape]="angularShape"
+            size="small"
+            [disabled]="delayAdd">
+            <ion-icon name="add"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-item>
