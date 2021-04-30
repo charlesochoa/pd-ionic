@@ -127,11 +127,11 @@ const routes = [
         children: [
             {
                 path: 'menu',
-                loadChildren: () => Promise.all(/*! import() | modules-menu-menu-module */[__webpack_require__.e("common"), __webpack_require__.e("modules-menu-menu-module")]).then(__webpack_require__.bind(null, /*! ../modules/menu/menu.module */ "5yR+")).then(m => m.MenuPageModule)
+                loadChildren: () => Promise.all(/*! import() | modules-menu-menu-module */[__webpack_require__.e("default~modules-checkout-checkout-module~modules-login-login-module~modules-menu-menu-module"), __webpack_require__.e("modules-menu-menu-module")]).then(__webpack_require__.bind(null, /*! ../modules/menu/menu.module */ "5yR+")).then(m => m.MenuPageModule)
             },
             {
                 path: 'checkout',
-                loadChildren: () => Promise.all(/*! import() | modules-checkout-checkout-module */[__webpack_require__.e("common"), __webpack_require__.e("modules-checkout-checkout-module")]).then(__webpack_require__.bind(null, /*! ../modules/checkout/checkout.module */ "bqgV")).then(m => m.CheckoutPageModule)
+                loadChildren: () => Promise.all(/*! import() | modules-checkout-checkout-module */[__webpack_require__.e("default~modules-checkout-checkout-module~modules-login-login-module~modules-menu-menu-module"), __webpack_require__.e("modules-checkout-checkout-module")]).then(__webpack_require__.bind(null, /*! ../modules/checkout/checkout.module */ "bqgV")).then(m => m.CheckoutPageModule)
             }
         ]
     }

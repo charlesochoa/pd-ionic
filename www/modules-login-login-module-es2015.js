@@ -102,22 +102,36 @@ let LoginPage = class LoginPage {
         this.checkoutService = checkoutService;
         this.toastController = toastController;
         this.email = '';
+        this.url = 'https://docs.google.com/forms/d/e/1FAIpQLSfQkUY7lr72heFFt0wzwUWyAHVPYdwRDwBuZhu-K3B1JEKgJA/viewform';
+    }
+    ionViewWillEnter() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            const t = this.authService.getTransaction();
+            this.email = '';
+            if (t) {
+                const alert = yield this.alertController.create({
+                    cssClass: 'my-custom-class',
+                    header: 'Muchas gracias!',
+                    message: 'Puedes acceder a la encuesta a través de: <a>https://docs.google.com/forms/d/e/1FAIpQLSfQkUY7lr72heFFt0wzwUWyAHVPYdwRDwBuZhu-K3B1JEKgJA/viewform</a>. <br><br>También hemos enviado el link a tu correo.',
+                    buttons: [
+                        {
+                            text: 'Vamos a responderla!',
+                            handler: () => {
+                                window.open(this.url, "_blank");
+                            }
+                        }
+                    ]
+                });
+                alert.present();
+            }
+        });
     }
     register() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            // console.log('Device Model0: ' + this.device);
-            // console.log('Device Model1: ' + this.device.cordova);
-            // console.log('Device Model2: ' + this.device.isVirtual);
-            // console.log('Device Model3: ' + this.device.manufacturer);
-            // console.log('Device Model4: ' + this.device.model);
-            // console.log('Device Model5: ' + this.device.platform);
-            // console.log('Device Model6: ' + this.device.serial);
-            // console.log('Device Model7: ' + this.device.uuid);
-            // console.log('Device Model8: ' + this.device.version);
             const alert = yield this.alertController.create({
                 cssClass: 'my-custom-class',
                 header: 'Bienvenido!',
-                message: '- Realiza una compra para ti y tus amigos -No tienes limites de tiempo, ni dinero.\n-La prueba finaliza al ir al carrito y finalizar el pedido.\n\nNo requiere datos personales ni de pago es un prototipo.',
+                message: '<strong>1-</strong>Realiza una compra para ti y tus amigos <br><strong>2-</strong>No tienes limites de tiempo, ni dinero <br><strong>3-</strong>La prueba finaliza al ir al carrito y finalizar el pedido <br><strong>4-</strong>No requiere datos personales ni de pago es un prototipo<br><strong>5-</strong>Finalmente, contesta nuestra encuesta de satisfacción.',
                 buttons: [
                     {
                         text: 'Cancelar',

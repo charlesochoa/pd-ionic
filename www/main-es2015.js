@@ -69,23 +69,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_component_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app.component.scss */ "ynWL");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/storage-angular */ "jSNZ");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "tyNb");
+
 
 
 
 
 
 let AppComponent = class AppComponent {
-    constructor(storage) {
+    constructor(storage, router) {
         this.storage = storage;
+        this.router = router;
     }
     ngOnInit() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            this.router.navigate(['login']);
             yield this.storage.create();
         });
     }
 };
 AppComponent.ctorParameters = () => [
-    { type: _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_4__["Storage"] }
+    { type: _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_4__["Storage"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] }
 ];
 AppComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
@@ -684,8 +689,12 @@ const routes = [
         loadChildren: () => __webpack_require__.e(/*! import() | tabs-tabs-module */ "tabs-tabs-module").then(__webpack_require__.bind(null, /*! ./tabs/tabs.module */ "hO9l")).then(m => m.TabsPageModule)
     },
     {
-        path: '',
-        loadChildren: () => Promise.all(/*! import() | modules-login-login-module */[__webpack_require__.e("common"), __webpack_require__.e("modules-login-login-module")]).then(__webpack_require__.bind(null, /*! ./modules/login/login.module */ "g7DB")).then(m => m.LoginPageModule)
+        path: 'login',
+        loadChildren: () => Promise.all(/*! import() | modules-login-login-module */[__webpack_require__.e("default~modules-checkout-checkout-module~modules-login-login-module~modules-menu-menu-module"), __webpack_require__.e("modules-login-login-module")]).then(__webpack_require__.bind(null, /*! ./modules/login/login.module */ "g7DB")).then(m => m.LoginPageModule)
+    },
+    {
+        path: 'error',
+        loadChildren: () => __webpack_require__.e(/*! import() | modules-error-error-module */ "modules-error-error-module").then(__webpack_require__.bind(null, /*! ./modules/error/error.module */ "BA7n")).then(m => m.ErrorPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {

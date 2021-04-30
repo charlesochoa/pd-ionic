@@ -1,10 +1,4 @@
 (function () {
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
   function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
   function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
@@ -131,261 +125,6 @@
       }();
       /***/
 
-    },
-
-    /***/
-    "GOjK":
-    /*!***********************************************!*\
-      !*** ./src/app/modules/login/auth.service.ts ***!
-      \***********************************************/
-
-    /*! exports provided: AuthService */
-
-    /***/
-    function GOjK(module, __webpack_exports__, __webpack_require__) {
-      "use strict";
-
-      __webpack_require__.r(__webpack_exports__);
-      /* harmony export (binding) */
-
-
-      __webpack_require__.d(__webpack_exports__, "AuthService", function () {
-        return AuthService;
-      });
-      /* harmony import */
-
-
-      var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-      /*! tslib */
-      "mrSG");
-      /* harmony import */
-
-
-      var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-      /*! @angular/common/http */
-      "tk/3");
-      /* harmony import */
-
-
-      var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-      /*! @angular/core */
-      "fXoL");
-      /* harmony import */
-
-
-      var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-      /*! ../../../environments/environment */
-      "AytR");
-      /* harmony import */
-
-
-      var _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-      /*! @ionic/storage-angular */
-      "jSNZ");
-
-      var AuthService = /*#__PURE__*/function () {
-        function AuthService(http, storage) {
-          _classCallCheck(this, AuthService);
-
-          this.http = http;
-          this.storage = storage;
-          this._storage = null;
-          this.init();
-        }
-
-        _createClass(AuthService, [{
-          key: "init",
-          value: function init() {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-              var storage;
-              return regeneratorRuntime.wrap(function _callee2$(_context2) {
-                while (1) {
-                  switch (_context2.prev = _context2.next) {
-                    case 0:
-                      _context2.next = 2;
-                      return this.storage.create();
-
-                    case 2:
-                      storage = _context2.sent;
-                      this._storage = storage;
-
-                    case 4:
-                    case "end":
-                      return _context2.stop();
-                  }
-                }
-              }, _callee2, this);
-            }));
-          }
-        }, {
-          key: "login",
-          value: function login(email) {
-            return this.http.post("".concat(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl, "ddp_users/"), {
-              user: {
-                email: email,
-                username: email
-              }
-            });
-          }
-        }, {
-          key: "getUsers",
-          value: function getUsers() {
-            return this.http.get("".concat(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl, "users/"));
-          }
-        }, {
-          key: "getUser",
-          value: function getUser(pk) {
-            return this.http.get("".concat(_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl, "ddp_users/").concat(pk, "/"));
-          }
-        }, {
-          key: "getLocalUser",
-          value: function getLocalUser() {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
-              var pk, angularShape, email, cartPk;
-              return regeneratorRuntime.wrap(function _callee3$(_context3) {
-                while (1) {
-                  switch (_context3.prev = _context3.next) {
-                    case 0:
-                      console.log('Trying to get localUser');
-                      _context3.next = 3;
-                      return this.storage.get('pk');
-
-                    case 3:
-                      pk = _context3.sent;
-
-                      if (!pk) {
-                        _context3.next = 16;
-                        break;
-                      }
-
-                      _context3.next = 7;
-                      return this.storage.get('angularShape');
-
-                    case 7:
-                      angularShape = _context3.sent;
-                      _context3.next = 10;
-                      return this.storage.get('email');
-
-                    case 10:
-                      email = _context3.sent;
-                      _context3.next = 13;
-                      return this.storage.get('cartPk');
-
-                    case 13:
-                      cartPk = _context3.sent;
-                      console.log({
-                        email: email,
-                        pk: pk,
-                        angularShape: angularShape
-                      });
-                      return _context3.abrupt("return", {
-                        email: email,
-                        pk: pk,
-                        angularShape: angularShape,
-                        cartPk: cartPk
-                      });
-
-                    case 16:
-                      return _context3.abrupt("return");
-
-                    case 17:
-                    case "end":
-                      return _context3.stop();
-                  }
-                }
-              }, _callee3, this);
-            }));
-          }
-        }, {
-          key: "setLocalUser",
-          value: function setLocalUser(u) {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
-              return regeneratorRuntime.wrap(function _callee4$(_context4) {
-                while (1) {
-                  switch (_context4.prev = _context4.next) {
-                    case 0:
-                      u.angularShape = u.shape === 'Angular';
-                      _context4.next = 3;
-                      return this.set('email', u.user.email);
-
-                    case 3:
-                      _context4.next = 5;
-                      return this.set('angularShape', u.angularShape);
-
-                    case 5:
-                      _context4.next = 7;
-                      return this.set('pk', u.pk);
-
-                    case 7:
-                      _context4.next = 9;
-                      return this.set('cartPk', u.cartPk);
-
-                    case 9:
-                    case "end":
-                      return _context4.stop();
-                  }
-                }
-              }, _callee4, this);
-            }));
-          }
-        }, {
-          key: "set",
-          value: function set(key, value) {
-            var _a;
-
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
-              return regeneratorRuntime.wrap(function _callee5$(_context5) {
-                while (1) {
-                  switch (_context5.prev = _context5.next) {
-                    case 0:
-                      console.log("Storage - ", key, value);
-                      _context5.next = 3;
-                      return (_a = this._storage) === null || _a === void 0 ? void 0 : _a.set(key, value);
-
-                    case 3:
-                    case "end":
-                      return _context5.stop();
-                  }
-                }
-              }, _callee5, this);
-            }));
-          }
-        }, {
-          key: "clear",
-          value: function clear() {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
-              return regeneratorRuntime.wrap(function _callee6$(_context6) {
-                while (1) {
-                  switch (_context6.prev = _context6.next) {
-                    case 0:
-                      _context6.next = 2;
-                      return this.storage.clear();
-
-                    case 2:
-                    case "end":
-                      return _context6.stop();
-                  }
-                }
-              }, _callee6, this);
-            }));
-          }
-        }]);
-
-        return AuthService;
-      }();
-
-      AuthService.ctorParameters = function () {
-        return [{
-          type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]
-        }, {
-          type: _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_4__["Storage"]
-        }];
-      };
-
-      AuthService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])({
-        providedIn: 'root'
-      })], AuthService);
-      /***/
     },
 
     /***/
@@ -543,22 +282,22 @@
       "1vRN");
 
       var attachComponent = /*#__PURE__*/function () {
-        var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(delegate, container, component, cssClasses, componentProps) {
+        var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(delegate, container, component, cssClasses, componentProps) {
           var el;
-          return regeneratorRuntime.wrap(function _callee7$(_context7) {
+          return regeneratorRuntime.wrap(function _callee2$(_context2) {
             while (1) {
-              switch (_context7.prev = _context7.next) {
+              switch (_context2.prev = _context2.next) {
                 case 0:
                   if (!delegate) {
-                    _context7.next = 2;
+                    _context2.next = 2;
                     break;
                   }
 
-                  return _context7.abrupt("return", delegate.attachViewToDom(container, component, componentProps, cssClasses));
+                  return _context2.abrupt("return", delegate.attachViewToDom(container, component, componentProps, cssClasses));
 
                 case 2:
                   if (!(typeof component !== 'string' && !(component instanceof HTMLElement))) {
-                    _context7.next = 4;
+                    _context2.next = 4;
                     break;
                   }
 
@@ -578,20 +317,20 @@
                   }
 
                   container.appendChild(el);
-                  _context7.next = 10;
+                  _context2.next = 10;
                   return new Promise(function (resolve) {
                     return Object(_helpers_dd7e4b7b_js__WEBPACK_IMPORTED_MODULE_0__["c"])(el, resolve);
                   });
 
                 case 10:
-                  return _context7.abrupt("return", el);
+                  return _context2.abrupt("return", el);
 
                 case 11:
                 case "end":
-                  return _context7.stop();
+                  return _context2.stop();
               }
             }
-          }, _callee7);
+          }, _callee2);
         }));
 
         return function attachComponent(_x5, _x6, _x7, _x8, _x9) {

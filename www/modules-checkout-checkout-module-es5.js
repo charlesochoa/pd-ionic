@@ -232,20 +232,20 @@
                                         _context.next = 2;
                                         return this.toastController.create({
                                           message: "\xA1Prueba finalizada! <strong>\xA1Muchisimas gracias!</strong> revisa tu correo y en cuanto puedas nos comentas qu\xE9 tal te pareci\xF3 nuestra propuesta!",
-                                          duration: 10000,
-                                          position: 'middle'
+                                          duration: 10000
                                         });
 
                                       case 2:
                                         toast = _context.sent;
-                                        _context.next = 5;
+                                        this.authService.set('t', t.pk);
+                                        _context.next = 6;
                                         return this.authService.clear();
 
-                                      case 5:
+                                      case 6:
                                         toast.present();
-                                        this.router.navigate(['']);
+                                        this.router.navigate(['login']);
 
-                                      case 7:
+                                      case 8:
                                       case "end":
                                         return _context.stop();
                                     }

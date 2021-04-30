@@ -144,12 +144,19 @@
       var _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! @ionic/storage-angular */
       "jSNZ");
+      /* harmony import */
+
+
+      var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      /*! @angular/router */
+      "tyNb");
 
       var AppComponent = /*#__PURE__*/function () {
-        function AppComponent(storage) {
+        function AppComponent(storage, router) {
           _classCallCheck(this, AppComponent);
 
           this.storage = storage;
+          this.router = router;
         }
 
         _createClass(AppComponent, [{
@@ -160,10 +167,11 @@
                 while (1) {
                   switch (_context.prev = _context.next) {
                     case 0:
-                      _context.next = 2;
+                      this.router.navigate(['login']);
+                      _context.next = 3;
                       return this.storage.create();
 
-                    case 2:
+                    case 3:
                     case "end":
                       return _context.stop();
                   }
@@ -179,6 +187,8 @@
       AppComponent.ctorParameters = function () {
         return [{
           type: _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_4__["Storage"]
+        }, {
+          type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]
         }];
       };
 
@@ -971,14 +981,25 @@
           });
         }
       }, {
-        path: '',
+        path: 'login',
         loadChildren: function loadChildren() {
           return Promise.all(
           /*! import() | modules-login-login-module */
-          [__webpack_require__.e("common"), __webpack_require__.e("modules-login-login-module")]).then(__webpack_require__.bind(null,
+          [__webpack_require__.e("default~modules-checkout-checkout-module~modules-login-login-module~modules-menu-menu-module"), __webpack_require__.e("modules-login-login-module")]).then(__webpack_require__.bind(null,
           /*! ./modules/login/login.module */
           "g7DB")).then(function (m) {
             return m.LoginPageModule;
+          });
+        }
+      }, {
+        path: 'error',
+        loadChildren: function loadChildren() {
+          return __webpack_require__.e(
+          /*! import() | modules-error-error-module */
+          "modules-error-error-module").then(__webpack_require__.bind(null,
+          /*! ./modules/error/error.module */
+          "BA7n")).then(function (m) {
+            return m.ErrorPageModule;
           });
         }
       }];

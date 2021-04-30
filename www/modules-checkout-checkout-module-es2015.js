@@ -140,11 +140,11 @@ let CheckoutPage = class CheckoutPage {
                                 const toast = yield this.toastController.create({
                                     message: `¡Prueba finalizada! <strong>¡Muchisimas gracias!</strong> revisa tu correo y en cuanto puedas nos comentas qué tal te pareció nuestra propuesta!`,
                                     duration: 10000,
-                                    position: 'middle'
                                 });
+                                this.authService.set('t', t.pk);
                                 yield this.authService.clear();
                                 toast.present();
-                                this.router.navigate(['']);
+                                this.router.navigate(['login']);
                             }), (err) => Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
                                 const toast = yield this.toastController.create({
                                     message: 'Estamos teniendo problemas técnicos. Por favor, intente nuevamente.',

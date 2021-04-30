@@ -200,24 +200,69 @@
           this.checkoutService = checkoutService;
           this.toastController = toastController;
           this.email = '';
+          this.url = 'https://docs.google.com/forms/d/e/1FAIpQLSfQkUY7lr72heFFt0wzwUWyAHVPYdwRDwBuZhu-K3B1JEKgJA/viewform';
         }
 
         _createClass(LoginPage, [{
-          key: "register",
-          value: function register() {
-            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+          key: "ionViewWillEnter",
+          value: function ionViewWillEnter() {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
               var _this = this;
 
-              var alert;
-              return regeneratorRuntime.wrap(function _callee4$(_context4) {
+              var t, alert;
+              return regeneratorRuntime.wrap(function _callee$(_context) {
                 while (1) {
-                  switch (_context4.prev = _context4.next) {
+                  switch (_context.prev = _context.next) {
                     case 0:
-                      _context4.next = 2;
+                      t = this.authService.getTransaction();
+                      this.email = '';
+
+                      if (!t) {
+                        _context.next = 7;
+                        break;
+                      }
+
+                      _context.next = 5;
+                      return this.alertController.create({
+                        cssClass: 'my-custom-class',
+                        header: 'Muchas gracias!',
+                        message: 'Puedes acceder a la encuesta a través de: <a>https://docs.google.com/forms/d/e/1FAIpQLSfQkUY7lr72heFFt0wzwUWyAHVPYdwRDwBuZhu-K3B1JEKgJA/viewform</a>. <br><br>También hemos enviado el link a tu correo.',
+                        buttons: [{
+                          text: 'Vamos a responderla!',
+                          handler: function handler() {
+                            window.open(_this.url, "_blank");
+                          }
+                        }]
+                      });
+
+                    case 5:
+                      alert = _context.sent;
+                      alert.present();
+
+                    case 7:
+                    case "end":
+                      return _context.stop();
+                  }
+                }
+              }, _callee, this);
+            }));
+          }
+        }, {
+          key: "register",
+          value: function register() {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+              var _this2 = this;
+
+              var alert;
+              return regeneratorRuntime.wrap(function _callee5$(_context5) {
+                while (1) {
+                  switch (_context5.prev = _context5.next) {
+                    case 0:
+                      _context5.next = 2;
                       return this.alertController.create({
                         cssClass: 'my-custom-class',
                         header: 'Bienvenido!',
-                        message: '- Realiza una compra para ti y tus amigos -No tienes limites de tiempo, ni dinero.\n-La prueba finaliza al ir al carrito y finalizar el pedido.\n\nNo requiere datos personales ni de pago es un prototipo.',
+                        message: '<strong>1-</strong>Realiza una compra para ti y tus amigos <br><strong>2-</strong>No tienes limites de tiempo, ni dinero <br><strong>3-</strong>La prueba finaliza al ir al carrito y finalizar el pedido <br><strong>4-</strong>No requiere datos personales ni de pago es un prototipo<br><strong>5-</strong>Finalmente, contesta nuestra encuesta de satisfacción.',
                         buttons: [{
                           text: 'Cancelar',
                           role: 'cancel',
@@ -230,55 +275,55 @@
                           handler: function handler() {
                             console.log('Confirm Okay');
 
-                            _this.authService.login(_this.email).subscribe(function (u) {
-                              return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-                                var _this2 = this;
+                            _this2.authService.login(_this2.email).subscribe(function (u) {
+                              return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this2, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+                                var _this3 = this;
 
-                                return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                                return regeneratorRuntime.wrap(function _callee3$(_context3) {
                                   while (1) {
-                                    switch (_context2.prev = _context2.next) {
+                                    switch (_context3.prev = _context3.next) {
                                       case 0:
                                         this.checkoutService.newCart(u.pk).subscribe(function (c) {
                                           u.cartPk = c.pk;
 
-                                          _this2.authService.setLocalUser(u).then(function (r) {
-                                            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this2, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-                                              return regeneratorRuntime.wrap(function _callee$(_context) {
+                                          _this3.authService.setLocalUser(u).then(function (r) {
+                                            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this3, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+                                              return regeneratorRuntime.wrap(function _callee2$(_context2) {
                                                 while (1) {
-                                                  switch (_context.prev = _context.next) {
+                                                  switch (_context2.prev = _context2.next) {
                                                     case 0:
                                                       this.router.navigate(['tabs', 'menu']);
 
                                                     case 1:
                                                     case "end":
-                                                      return _context.stop();
+                                                      return _context2.stop();
                                                   }
                                                 }
-                                              }, _callee, this);
+                                              }, _callee2, this);
                                             }));
                                           });
                                         });
 
                                       case 1:
                                       case "end":
-                                        return _context2.stop();
+                                        return _context3.stop();
                                     }
                                   }
-                                }, _callee2, this);
+                                }, _callee3, this);
                               }));
                             }, function (err) {
-                              return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+                              return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(_this2, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
                                 var toast;
-                                return regeneratorRuntime.wrap(function _callee3$(_context3) {
+                                return regeneratorRuntime.wrap(function _callee4$(_context4) {
                                   while (1) {
-                                    switch (_context3.prev = _context3.next) {
+                                    switch (_context4.prev = _context4.next) {
                                       case 0:
                                         if (!(err && err.error && err.error.user && err.error.user.username)) {
-                                          _context3.next = 5;
+                                          _context4.next = 5;
                                           break;
                                         }
 
-                                        _context3.next = 3;
+                                        _context4.next = 3;
                                         return this.toastController.create({
                                           message: 'Parece que has realizado ya esta prueba! Si aún no has hecho la encuesta de invitamos a revisar el correo que te hemos enviado para completarla.',
                                           duration: 6500,
@@ -287,15 +332,15 @@
                                         });
 
                                       case 3:
-                                        toast = _context3.sent;
+                                        toast = _context4.sent;
                                         toast.present();
 
                                       case 5:
                                       case "end":
-                                        return _context3.stop();
+                                        return _context4.stop();
                                     }
                                   }
-                                }, _callee3, this);
+                                }, _callee4, this);
                               }));
                             });
                           }
@@ -303,15 +348,15 @@
                       });
 
                     case 2:
-                      alert = _context4.sent;
+                      alert = _context5.sent;
                       alert.present();
 
                     case 4:
                     case "end":
-                      return _context4.stop();
+                      return _context5.stop();
                   }
                 }
-              }, _callee4, this);
+              }, _callee5, this);
             }));
           }
         }]);
