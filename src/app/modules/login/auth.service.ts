@@ -4,17 +4,46 @@ import { Observable } from "rxjs";
 import { environment } from "../../../environments/environment";
 import { User } from "../checkout/class/user";
 import { Storage } from '@ionic/storage-angular';
+import { DeviceDetectorService, DeviceInfo } from "ngx-device-detector";
+import { Router } from "@angular/router";
+import { AlertController } from "@ionic/angular";
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private _storage: Storage | null = null;
+  deviceInfo: DeviceInfo;
+
   constructor(private http: HttpClient,
+    private deviceDetectorService: DeviceDetectorService,
+    private router: Router,
+    private alertController: AlertController,
     private storage: Storage) {
     this.init();
   }
 
   async init() {
     // If using, define drivers here: await this.storage.defineDriver(/*...*/);
+    this.deviceInfo = this.deviceDetectorService.getDeviceInfo();
+    if (this.deviceInfo.os !== 'iOS' && this.deviceInfo.os !== 'Android') {
+      const alert = await this.alertController.create({
+        cssClass: 'my-custom-class',
+        header: 'Atención!',
+        message: `Estás entrando desde un dispositivo para el cual no está desarrolada esta plataforma. Por favor entra desde tu dispositivo móvil.`,
+        buttons: [
+          {
+            text: 'Entendido',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: (blah) => {
+              this.router.navigate(['error']);
+              
+            }
+          }
+        ]
+      });
+  
+      alert.present();
+    }
     const storage = await this.storage.create();
     this._storage = storage;
   }
@@ -43,6 +72,12 @@ export class AuthService {
     }
     return;
   }
+
+  async getTransaction(): Promise<string> {
+    const t: string = await this.storage.get('t');
+    return t;
+  }
+
   async setLocalUser(u: any) {
     u.angularShape = u.shape === 'Angular';
     await this.set('email', u.user.email);
