@@ -64,7 +64,6 @@
   },
   "description": "An Ionic project",
   "engines": {
-    "npm": "10.x",
     "node": "10.x"
   }
 }
