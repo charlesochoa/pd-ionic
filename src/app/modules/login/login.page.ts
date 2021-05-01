@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController, ToastController } from '@ionic/angular';
+import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 import { AuthService } from './auth.service';
 import { CheckoutService } from '../checkout/checkout.service';
 
@@ -18,6 +18,7 @@ export class LoginPage {
     private authService: AuthService,
     private alertController: AlertController,
     private checkoutService: CheckoutService,
+    public loadingController: LoadingController,
     public toastController: ToastController) {
   }
 
@@ -25,17 +26,10 @@ export class LoginPage {
     const t = await this.authService.getTransaction();
     this.email = '';
     if (t) {
-      this.delay = true;
-      const toast = await this.toastController.create({
-        message: 'Parece que has realizado ya esta prueba! Si aún no has hecho la encuesta de invitamos a revisar el correo que te hemos enviado para completarla.',
-        duration: 6500,
-        color: 'success'
-      });
-      toast.present();
       const alert = await this.alertController.create({
         cssClass: 'my-custom-class',
         header: 'Muchas gracias!',
-        message: 'Puedes acceder a la encuesta a través de: <a>https://docs.google.com/forms/d/e/1FAIpQLSfQkUY7lr72heFFt0wzwUWyAHVPYdwRDwBuZhu-K3B1JEKgJA/viewform</a>. <br><br>También hemos enviado el link a tu correo.',
+        message: 'Puedes acceder a la encuesta a través de: <a>https://docs.google.com/forms/d/e/1FAIpQLSfQkUY7lr72heFFt0wzwUWyAHVPYdwRDwBuZhu-K3B1JEKgJA/viewform</a>. <br><br>.',
         buttons: [
           {
             text: 'Vamos a responderla!',
@@ -55,7 +49,7 @@ export class LoginPage {
 
 
   async register() {
-    this.delay = true;
+
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Bienvenido!',
@@ -70,33 +64,43 @@ export class LoginPage {
           }
         }, {
           text: 'Vamos!',
-          handler: () => {
-            console.log('Confirm Okay');
-            this.authService.login(this.email).subscribe(async (u: any) => {
-              this.checkoutService.newCart(u.pk).subscribe(c => {
-                u.cartPk = c.pk
-                this.authService.setLocalUser(u).then( async r => {
-                  this.router.navigate(['tabs','menu']);
-                })
+          handler: async () => {
+            if (!this.delay) {
+              this.delay = true;
+              console.log('Confirm Okay');
+              
+              const loading = await this.loadingController.create({
+                message: 'Cargando...'
               });
-            }, async err => {
-              this.delay = false;
-              if( err && err.error && err.error.user && err.error.user.username ) {
-                const toast = await this.toastController.create({
-                  message: 'Parece que el correo que has ingresado ya ha sido usado para ingresar al sistema. Por favor, ingrese otro correo, y disculpe las molestias.',
-                  duration: 6500,
-                  color: 'warning'
+              loading.present();
+              this.authService.login(this.email).subscribe(async (u: any) => {
+                this.checkoutService.newCart(u.pk).subscribe(c => {
+                  u.cartPk = c.pk
+                  this.authService.setLocalUser(u).then( async r => {
+                    loading.dismiss();
+                    this.router.navigate(['tabs','menu']);
+                  })
                 });
-                toast.present();
-              } else {
-                const toast = await this.toastController.create({
-                  message: 'Estamos teniendo algunos problemas técnicos. De ser posible continúa con la prueba.',
-                  duration: 6500,
-                  color: 'danger',
-                });
-                toast.present();
-              }
-            });
+              }, async err => {
+                loading.dismiss();
+                this.delay = false;
+                if( err && err.error && err.error.user && err.error.user.username ) {
+                  const toast = await this.toastController.create({
+                    message: 'Parece que el correo que has ingresado ya ha sido usado para ingresar al sistema. Por favor, ingrese otro correo, y disculpe las molestias.',
+                    duration: 6500,
+                    color: 'warning'
+                  });
+                  toast.present();
+                } else {
+                  const toast = await this.toastController.create({
+                    message: 'Estamos teniendo algunos problemas técnicos. De ser posible continúa con la prueba.',
+                    duration: 6500,
+                    color: 'danger',
+                  });
+                  toast.present();
+                }
+              });
+            }
           }
         }
       ]

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController, ToastController } from '@ionic/angular';
+import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 import { AuthService } from '../login/auth.service';
 import { CheckoutService } from './checkout.service';
 import { Cart } from './class/cart';
@@ -21,6 +21,7 @@ export class CheckoutPage {
     private authService: AuthService,
     private alertController: AlertController,
     public toastController: ToastController,
+    public loadingController: LoadingController,
     private router: Router
     ) {}
   ionViewWillEnter(): void {
@@ -91,7 +92,12 @@ export class CheckoutPage {
           }
         }, {
           text: 'Seguro!',
-          handler: () => {
+          handler: async () => {
+            
+            const loading = await this.loadingController.create({
+              message: 'Cargando...'
+            });
+            loading.present();
             this.checkoutService.makeTransaction( this.cart.pk).subscribe(async t => {
               const toast = await this.toastController.create({
                 message: `¡Prueba finalizada! <strong>¡Muchisimas gracias!</strong> nos comentas qué tal te pareció nuestra propuesta!`,
@@ -100,6 +106,7 @@ export class CheckoutPage {
               this.authService.set('t',t.pk);
               await this.authService.clear();
               toast.present();
+              loading.dismiss();
               this.router.navigate(['login']);
             }, async err => {
               const toast = await this.toastController.create({
