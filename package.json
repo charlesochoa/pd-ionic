@@ -5,7 +5,7 @@
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "serve": "ionic serve",
     "serve:prod": "ionic serve --prod",
     "build": "ng build",
@@ -71,7 +71,7 @@
   "description": "An Ionic project",
   "engines": {
     "node": "10.15.3",
-
+    "ionic": "6.11.8",
     "npm": "6.4.1"
   }
 }
