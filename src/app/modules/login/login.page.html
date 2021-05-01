@@ -18,11 +18,14 @@
       <ion-row justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
           <div text-center>
-            <h3>El siguiente correo electrónico tendrá uso exclusivo para el estudio. Una vez terminado el mismo, se eliminarán de la base de datos.</h3>
+            <h3>¡Bienvenido a Eat And Feel!</h3>
+            <p> Es una versión limitada, y queremos saber qué tal te parece.</p>
+            <br>
+            <p> Por favor, ingresa tu correo para empezar. Este correo será usado sólamente para asociarlo a la encuesta. Luego de saber tu opinión cualquier información personal será eliminada. </p>
           </div>
           <div padding>
             <ion-item>
-              <ion-input name="email" type="email" placeholder="your@email.com" [(ngModel)]="email" required></ion-input>
+              <ion-input name="email" type="email" placeholder="your@email.com" [(ngModel)]="email" required pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"></ion-input>
             </ion-item>
           </div>
         </ion-col>

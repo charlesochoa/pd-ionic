@@ -21,10 +21,16 @@ export class LoginPage {
   }
 
   async ionViewWillEnter() {
-    const t = this.authService.getTransaction();
+    const t = await this.authService.getTransaction();
     this.email = '';
     if (t) {
 
+      const toast = await this.toastController.create({
+        message: 'Parece que has realizado ya esta prueba! Si aún no has hecho la encuesta de invitamos a revisar el correo que te hemos enviado para completarla.',
+        duration: 6500,
+        color: 'success'
+      });
+      toast.present();
       const alert = await this.alertController.create({
         cssClass: 'my-custom-class',
         header: 'Muchas gracias!',
@@ -72,11 +78,18 @@ export class LoginPage {
               });
             }, async err => {
               if( err && err.error && err.error.user && err.error.user.username ) {
+
                 const toast = await this.toastController.create({
-                  message: 'Parece que has realizado ya esta prueba! Si aún no has hecho la encuesta de invitamos a revisar el correo que te hemos enviado para completarla.',
+                  message: 'Parece que el correo que has ingresado ya ha sido usado para ingresar al sistema. Por favor, ingrese otro correo, y disculpe las molestias.',
                   duration: 6500,
-                  color: 'success',
-                  position: 'middle'
+                  color: 'warning'
+                });
+                toast.present();
+              } else {
+                const toast = await this.toastController.create({
+                  message: 'El formato del correo no es válido. Verifícalo y prueba nuevamente',
+                  duration: 6500,
+                  color: 'danger',
                 });
                 toast.present();
               }
