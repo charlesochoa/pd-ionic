@@ -9,6 +9,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared.module';
 import { IonicStorageModule } from '@ionic/storage-angular';
+import { LoginPageModule } from './modules/login/login.module';
+import { MenuPage } from './modules/menu/menu.page';
+import { MenuPageModule } from './modules/menu/menu.module';
+import { CheckoutPageModule } from './modules/checkout/checkout.module';
+import { ErrorPageModule } from './modules/error/error.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +24,10 @@ import { IonicStorageModule } from '@ionic/storage-angular';
     AppRoutingModule,
     SharedModule,
     RouterModule,
+    LoginPageModule,
+    MenuPageModule,
+    CheckoutPageModule,
+    ErrorPageModule,
     HttpClientModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
