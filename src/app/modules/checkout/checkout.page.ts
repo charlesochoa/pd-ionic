@@ -94,7 +94,7 @@ export class CheckoutPage {
           handler: () => {
             this.checkoutService.makeTransaction( this.cart.pk).subscribe(async t => {
               const toast = await this.toastController.create({
-                message: `¡Prueba finalizada! <strong>¡Muchisimas gracias!</strong> revisa tu correo y en cuanto puedas nos comentas qué tal te pareció nuestra propuesta!`,
+                message: `¡Prueba finalizada! <strong>¡Muchisimas gracias!</strong> nos comentas qué tal te pareció nuestra propuesta!`,
                 duration: 10000,
               });
               this.authService.set('t',t.pk);
@@ -103,7 +103,7 @@ export class CheckoutPage {
               this.router.navigate(['login']);
             }, async err => {
               const toast = await this.toastController.create({
-                message: 'Estamos teniendo problemas técnicos. Por favor, intente nuevamente.',
+                message: 'Estamos teniendo algunos problemas técnicos. De ser posible continúa con la prueba.',
                 duration: 1000,
                 color: 'danger'
               });
