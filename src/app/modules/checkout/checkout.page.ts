@@ -81,7 +81,7 @@ export class CheckoutPage {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Ya estás casi listo!',
-      message: `¿Seguro que deseas realizar esta compra por un total de <strong>${this.cart.total} €</strong>?`,
+      message: `¿Seguro que deseas realizar esta compra por un total de <strong>${this.cart.total.toFixed(2)} €</strong>?`,
       buttons: [
         {
           text: 'Todavía no',
