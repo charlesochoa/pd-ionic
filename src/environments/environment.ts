@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://ddp-backend.herokuapp.com/'
+  apiUrl: 'https://ddp-backend.herokuapp.com/',
+  hostname: 'localhost',
+  domain: 'eat-and-feel',
+  port: '5000'
 };
 
 /*

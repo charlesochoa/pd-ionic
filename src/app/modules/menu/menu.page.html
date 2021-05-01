@@ -15,12 +15,12 @@
 
 <ion-content class="content">
   <ion-list *ngIf="cartProducts">
-    <product-item *ngFor="let item of cartProducts; let i = index"
+    <app-product-item *ngFor="let item of cartProducts; let i = index"
     (cartChange)="modifyCart($event, i)"
     [cartProduct]= "item"
     [cart]= "cart"
     class="item animated delay-0{{ i+3 }}s"
     [angularShape]="user.angularShape">
-    </product-item>
+    </app-product-item>
   </ion-list>
 </ion-content>

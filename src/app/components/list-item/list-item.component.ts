@@ -6,7 +6,7 @@ import { CartProduct } from '../../modules/checkout/class/cart-product';
 import { Product } from '../../modules/menu/class/product';
 
 @Component({
-  selector: 'list-item',
+  selector: 'app-list-item',
   templateUrl: 'list-item.component.html',
   styleUrls: ['list-item.component.scss'],
 })
