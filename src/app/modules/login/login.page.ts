@@ -84,13 +84,24 @@ export class LoginPage {
               }, async err => {
                 loading.dismiss();
                 this.delay = false;
-                if( err && err.error && err.error.user && err.error.user.username ) {
-                  const toast = await this.toastController.create({
-                    message: 'Parece que el correo que has ingresado ya ha sido usado para ingresar al sistema. Por favor, ingrese otro correo, y disculpe las molestias.',
-                    duration: 6500,
-                    color: 'warning'
+                console.log(err);
+                if( err && err.error && err.error.error && err.error.error === 'A transaction related to that user already exists!' ) {
+                              
+                  const alert = await this.alertController.create({
+                    cssClass: 'my-custom-class',
+                    header: 'Muchas gracias!',
+                    message: 'Puedes acceder a la encuesta a través de: <a>https://docs.google.com/forms/d/e/1FAIpQLSfQkUY7lr72heFFt0wzwUWyAHVPYdwRDwBuZhu-K3B1JEKgJA/viewform</a>. <br><br>.',
+                    buttons: [
+                      {
+                        text: 'Vamos a responderla!',
+                        handler: () => {
+                          window.open(this.url, "_blank");
+                        }
+                      }
+                    ]
                   });
-                  toast.present();
+              
+                  alert.present();
                 } else {
                   const toast = await this.toastController.create({
                     message: 'Estamos teniendo algunos problemas técnicos. De ser posible continúa con la prueba.',
